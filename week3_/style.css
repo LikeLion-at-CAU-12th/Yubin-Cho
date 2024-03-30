@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Dokdo&display=swap');
+* {
+    font-family: "Dokdo", system-ui;
+}
+
+#introduction{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+}
+
+img{
+    height: 300px;
+    margin:auto;
+    margin-top: 50px;
+    display:block;
+}
+
+.image{
+    position: relative;
+}
+
+.button-벚꽃찌개 {
+    position: absolute;
+    left: 47.5%;
+    top: 29.5%;
+    transform: translateX(-50%);
+    display: table;
+    border: white hidden;
+    border-radius: 50%;
+    width: 35px;
+    height: 25px;
+    background-color: transparent;
+  }
+  
+  .button-김치볶음밥 {
+    position: absolute;
+    left: 50.8%;
+    top: 28.2%;
+    transform: translateX(-50%);
+    display: table;
+    border: black hidden;
+    border-radius: 50%;
+    width: 30px;
+    height: 25px;
+    background-color: transparent;
+  }
+
