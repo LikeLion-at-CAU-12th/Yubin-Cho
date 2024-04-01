@@ -2,5 +2,7 @@
 
 # Yuvin-Cho
 
-안녕하세요! 멋쟁이사자처럼 12기 프론트엔드
-조유빈입니다 🦁
+
+    <p style="text-align: center; color: white;"><p>🦁 Introduction 🦁</p>
+    <p>안녕하세요! 멋쟁이 사자처럼 프론트엔드 조유빈입니다. <br>경영학과 2학년에 재학 중입니다.</p></p>
+  </b>
