@@ -2,7 +2,8 @@
 
 # Yuvin-Cho
 <div>
-    
+    <b>
     <p style="text-align: center; color: white;"><p>🦁 Introduction 🦁</p>
-    <p>안녕하세요! 멋쟁이 사자처럼 프론트엔드 조유빈입니다</p>
+    <p>안녕하세요! 멋쟁이 사자처럼 프론트엔드 조유빈입니다</p></p>
+    </b>
     </div>
