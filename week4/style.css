@@ -1,0 +1,133 @@
+@import url('https://webfontworld.github.io/DungGeunMo/DungGeunMo.css');
+* {
+    font-family: 'DungGeunMo';
+    font-size: 1rem;
+}
+#container{
+    width: 90vw;
+    height: 90vh;
+    background-color: rgba(255, 255, 255, 0.688);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+header{
+    width: 5%;
+    height: 65%;
+    flex-basis: 7%;
+    display: flex;
+    flex-direction: column;
+}
+#logo{
+    background-color: whitesmoke;
+    flex-basis: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav{
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 0.2rem solid transparent;
+}
+.nav-item{
+    flex-basis: 19%;
+    background-color: whitesmoke;
+    border: 0.2rem dotted grey;
+    height: 10%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    a {
+        color: black;
+        text-decoration: none;
+      }
+}
+main{
+    background-color: rgba(255, 255, 255, 0.78);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 95%;
+    flex-basis: 85%;
+    border: 0.3rem dotted white;
+    border-radius: 10px;
+}
+article{
+    flex-basis: 30%;
+    border: 0.2rem solid transparent;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.article-item{
+    flex-basis: 15%;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    border: 0.2rem solid transparent;
+}
+section{
+    flex-basis: 90%;
+    border: 0.2rem solid transparent;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+section1{
+    flex-basis: 40%;
+    border: 0.2rem solid transparent;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+aside{
+    flex-basis: 70%;
+    height: 90%;
+    border: 0.2rem solid transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.link > a {
+    color: black;
+  }
+
+@media all and (max-width: 900px){
+    main {
+        flex-direction: column;
+    }
+    article{
+        width: 95%;
+    }
+    aside{
+        width: 95%;
+    }
+}
+@media all and (max-width: 900px) {
+    header{
+        flex-direction: column;
+    }
+}
