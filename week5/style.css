@@ -148,3 +148,9 @@ button {
 .title {
   border-bottom: black solid 3px;
 }
+
+.dark-mode{
+  background-color: black;
+  color: white;
+  border: white;
+}

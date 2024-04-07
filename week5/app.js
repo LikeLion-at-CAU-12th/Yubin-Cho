@@ -81,3 +81,14 @@ function start(Mychoice){
 
     updateScore(result);
 }
+
+//다크모드
+const DarkMode = document.querySelector("body");
+//체크박스 별칭
+const checkbox = document.querySelector("input");
+//체크박스 클릭시 동작 수행
+function darkmode() {
+    //바디에서 classlist조회하고 darkmode 
+    DarkMode.classList.toggle("dark-mode");
+}
+checkbox.addEventListener("change", darkmode);
