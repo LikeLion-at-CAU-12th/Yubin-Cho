@@ -8,6 +8,10 @@ const rockBtn = document.getElementById("rock");
 const scissorsBtn = document.getElementById("scissors");
 const paperBtn = document.getElementById("paper");
 
+const resetBtn = document.getElementById("reset-button");
+
+resetBtn.addEventListener("click", resetGame);
+
 rockBtn.addEventListener("click", displayMychoice);
 scissorsBtn.addEventListener("click", displayMychoice);
 paperBtn.addEventListener("click", displayMychoice);
@@ -44,20 +48,24 @@ function displayComChoice(result) {
 let MyScore = 0;
 let ComScore = 0;
 
+const MyScoreText = document.getElementById("score-my-score");
+const ComScoreText = document.getElementById("score-computer-score");
+    
+
 function updateScore(result) {
     if (result === "Win") {
         MyScore += 1;
     } else if (result ==="Lose") {
         ComScore += 1;
     }
-    const MyScoreText = document.getElementById("score-my-score");
-    const ComScoreText = document.getElementById("score-computer-score");
     
     MyScoreText.innerText = MyScore;
     ComScoreText.innerText = ComScore;
 }
 
 //게임 시작하기
+const resultText = document.getElementById("display-result");
+
 function start(Mychoice){
     let resultArray = getComChoice();
          displayComChoice(resultArray);
@@ -75,20 +83,33 @@ function start(Mychoice){
     } else {
         result = "Lose";
     }
-
-    const resultText = document.getElementById("display-result");
     resultText.innerText = result;
 
     updateScore(result);
 }
 
 //다크모드
-const DarkMode = document.querySelector("body");
-//체크박스 별칭
-const checkbox = document.querySelector("input");
+const darkModeBtn = document.getElementById("dark-mode");
+darkModeBtn.addEventListener("click", darkmode);
+
 //체크박스 클릭시 동작 수행
 function darkmode() {
     //바디에서 classlist조회하고 darkmode 
-    DarkMode.classList.toggle("dark-mode");
+    document.body.classList.toggle("dark-mode");
+    const contents = document.getElementById("contents-wrapper");
+    contents.classList.toggle("dark-mode");
 }
 checkbox.addEventListener("change", darkmode);
+
+function resetGame(){
+    MyScore = 0;
+    ComScore = 0;
+
+    MyScoreText.innerText = MyScore;
+    ComScoreText.innerText = ComScore;
+    resultText.innerText = "";
+    myHandText.innerText = "";
+    myHandIcon.className = "";
+    computerText.innerText = "";
+    computerIcon.className = "";
+}
