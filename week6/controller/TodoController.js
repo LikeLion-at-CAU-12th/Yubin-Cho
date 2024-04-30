@@ -7,7 +7,7 @@ import CompleteController from "./CompleteController.js";
 //todo를 삭제, 완료에 대한 todo 리스트를 컨트롤 하는 기능
 class TodoController{
     constructor(todo){
-        //this.todo = todo;
+        this.todo = todo;
         this.newTodo = new Todo(todo); //newTodo : todo를 이용해 만든 Todo 인스턴스
         // todo의 메소드들을 호출하고 삭제, 완료, innertext에 해당하는 node를 가져옴.
         this.delBtnNode = this.newTodo.getDelBtn();
@@ -34,8 +34,8 @@ class TodoController{
         todoList.removeChild(this.newTodo.getRow());
     }
     //완료 버튼 클릭 시
-    doneTodo(todo){
-        this.completeController = new CompleteController(todo);
+    doneTodo(){
+        this.completeController = new CompleteController(this.todo);
         this.completeController.addCompleteTodo();
         this.delTodo();
     }
