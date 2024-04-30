@@ -1,12 +1,13 @@
-import Button from "./Button.js";
 import Div from "./Div.js"
+import Image from "./image.js";
 
 class Todo{
     constructor(todo){
         this.row = new Div('', 'row').node;
         this.textBox = new Div(todo, 'text-box');
-        this.completeBtn = new Button('완료', 'complete-btn');
-        this.delBtn = new Button('삭제', 'del-btn');
+        //버튼으로 만들었던 태그들을 이미지로 변경
+        this.completeBtn = new Image('complete-btn');
+        this.delBtn = new Image('del-btn');
     }
     addRow(){
         [this.textBox, this.completeBtn, this.delBtn].forEach((dom) => {

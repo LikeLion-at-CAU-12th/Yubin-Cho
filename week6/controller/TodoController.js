@@ -13,8 +13,7 @@ class TodoController{
         this.delBtnNode = this.newTodo.getDelBtn();
         this.comBtnNode = this.newTodo.getCompleteBtn();
         this.innerNode = this.newTodo.getInnerText();
-
-
+        
         //가져온 node 클릭 시 호출할 함수 설정
         this.delBtnNode.addEventListener('click', () =>{
             this.delTodo();

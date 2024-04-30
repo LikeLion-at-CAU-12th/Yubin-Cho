@@ -105,7 +105,9 @@ button{
 }
 .complete-btn{
     color: white;
-    background-color: #4d81b1;
+    content: url(./img/done.png);
+    width :  40px;
+
 }
 .complete-btn:hover{
     cursor: pointer;
@@ -114,7 +116,8 @@ button{
 
 .del-btn{
     color: white;
-    background-color: #5e5e5e;
+    content: url(./img/del.png);
+    width :  40px;
 }
 .del-btn:hover{
     cursor: pointer;
@@ -127,7 +130,13 @@ button{
 }
 
 .done-btn{
-    background-color: #5e5e5e;
+    color: white;
+    content: url(./img/undo.png);
+    width :  40px;
+}
+.done-btn:hover{
+    cursor: pointer;
+    background-color: #c4e2ff;
 }
 
 @media all and (max-width:970px){
@@ -139,4 +148,3 @@ button{
         width: 90%;
     }
 }
-
