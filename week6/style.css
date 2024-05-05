@@ -47,6 +47,7 @@ article{
     height: 15%;
     min-height: 80px;
     background-color: #efdf91;
+    flex-direction: row;
 }
 
 #input-box{
@@ -93,6 +94,7 @@ button{
 
 .row{
     display: flex;
+    flex-wrap: row;
     width: 90%;
     justify-content: space-between;
     align-items: center;
@@ -103,11 +105,11 @@ button{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .complete-btn{
     color: white;
     content: url(./img/done.png);
-    width :  40px;
-
+    width :  40px
 }
 .complete-btn:hover{
     cursor: pointer;
