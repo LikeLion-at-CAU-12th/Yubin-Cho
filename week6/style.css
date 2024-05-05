@@ -50,6 +50,13 @@ article{
     flex-direction: row;
 }
 
+.row_complete{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    border: 1px solid #c7e4ff;
+}
+
 #input-box{
     display: flex;
     width: 80%;
