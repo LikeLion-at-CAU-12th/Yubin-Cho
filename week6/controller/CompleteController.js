@@ -32,9 +32,9 @@ class CompleteController{
         completeList.removeChild(this.complete.getRow());
     }
     //미완 버튼 클릭 시 삭제 후 to do list 다시 추가
-    notDoneTodo(todo){
+    notDoneTodo(){
         this.doneBtnNode.innerText = '완료';
-        this.todoController = new TodoController(todo);
+        this.todoController = new TodoController(this.todo);
         this.todoController.addTodo();
         this.delTodo();
     }
