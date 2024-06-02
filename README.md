@@ -3,7 +3,7 @@
 <div>
     <b>
     <p style="text-align: center; color: white;">
-    안녕하세요!<br>멋쟁이 사자처럼 12기 프론트엔드 <a src ="https://joey-joo-guestbook.o-r.kr/">조유빈</a>입니다 🦁</p>
+    안녕하세요!<br>멋쟁이 사자처럼 12기 프론트엔드 아기사자 <a src ="https://joey-joo-guestbook.o-r.kr/">조유빈</a>입니다 🦁</p>
     </b>
-    <p>/</p>
+    <p></p>
     </div>
