@@ -50,17 +50,18 @@ const TestList = () => {
               <ChoiceWrapper>
                 <ChoiceBtn
                   onClick={() => putAnswer(idx, 1)}
-                  className={answers[idx] === 1}>
+                  //버튼 누를때 
+                  className={answers[idx] === 1 ? 'active' : ''}>
                   {question.choices[0]}
                 </ChoiceBtn>
                 <ChoiceBtn
                   onClick={() => putAnswer(idx, 2)}
-                  className={answers[idx] === 2}>
+                  className={answers[idx] === 2 ? 'active' : ''}>
                   {question.choices[1]}
                 </ChoiceBtn>
                 <ChoiceBtn
                   onClick={() => putAnswer(idx, 3)}
-                  className={answers[idx] === 3}>
+                  className={answers[idx] === 3 ? 'active' : ''}>
                   {question.choices[2]}
                 </ChoiceBtn>
               </ChoiceWrapper>
