@@ -14,3 +14,8 @@ export const isSubmittedAtom = atom({
     key : 'isSubmitted',
     default : false, //불리언 값
 });
+
+export const birthAtom = atom({
+    key : 'birth',
+    default : '20041022',
+});
