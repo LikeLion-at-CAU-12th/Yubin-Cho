@@ -8,6 +8,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import Radio from './Radio';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import Layout1 from '../layout/Layout1';
 
 const FormSection = () => {
   const mode = useContext(ThemeColorContext);
@@ -54,6 +55,7 @@ const FormSection = () => {
           특징: {char}<br></br>이름: {userName}<br></br>이메일: {email}<br></br><br></br>맞으십니까?<br>
           </br><br></br><Button mode={mode.button} onClick={closemodal}>취소</Button><Button mode={mode.button} onClick={handleBtn}>확인</Button>
           </h3>
+          <Layout1 />
         </Modal>
       ) : null}
     </Wrapper>

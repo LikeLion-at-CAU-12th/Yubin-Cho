@@ -6,23 +6,22 @@ import { useRecoilValue } from 'recoil'
 import { charAtom, emailAtom, isSubmittedAtom, userNameAtom } from '../../recoil/atom'
 
 const Layout = ({ children }) => {
-    const context = useContext(ThemeColorContext);
-    const [mode, setMode] = useState(context.blueTheme);
+    const themeContext = useContext(ThemeColorContext);
+    const [mode, setMode] = useState(themeContext.blueTheme);
     const userName = useRecoilValue(userNameAtom);
     const email = useRecoilValue(emailAtom);
     const char = useRecoilValue(charAtom);
     const isSubmitted = useRecoilValue(isSubmittedAtom);
 
-
     const handleMode = (e) => {
         const value = e.target.value;
         if(value === 'blue'){
-            setMode(context.blueTheme);
+            setMode(themeContext.blueTheme);
         }else if(value === 'green'){
-            setMode(context.greenTheme);
+            setMode(themeContext.greenTheme);
         }else{
-            setMode(context.pinkTheme);
-        }
+            setMode(themeContext.pinkTheme);
+    }
     }
   return (
     <ThemeColorContext.Provider value={mode}>
