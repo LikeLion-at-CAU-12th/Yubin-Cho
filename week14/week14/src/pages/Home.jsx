@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
-import { useForm } from '../hooks/useForm';
-import { login } from '../apis/user';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { useForm } from "../hooks/useForm";
+import { login } from "../apis/user";
 
 const Home = () => {
   const [id, onChangeId] = useForm();
@@ -10,44 +10,44 @@ const Home = () => {
 
   const router = useNavigate();
 
-  const onClick = async() => {
-    try{
+  const onClick = async () => {
+    try {
       const result = await login(id, pw);
       localStorage.setItem("access", result.accessToken);
       localStorage.setItem("refresh", result.refreshToken);
-      router("/mypage")
-    } catch (error){
-      alert("check your ID or pw");
+      router("/mypage");
+    } catch (error) {
+      alert("아이디와 패스워드를 다시 확인하세요");
     }
-  }
+  };
 
   return (
     <>
       <Wrapper>
-        <Title>Log In</Title>
+        <Title>로그인</Title>
         <Form>
           <Inputs>
-          <div >ID</div>
-          <input value={id} onChange={onChangeId}  />
-          <div >pwd</div>
-          <input type='password' value={pw} onChange={onChangePw} />
+            <div>아이디</div>
+            <input value={id} onChange={onChangeId} />
+            <div>비밀번호</div>
+            <input type="password" value={pw} onChange={onChangePw} />
           </Inputs>
           <TextWrap>
-            <div>ID 찾기</div>
+            <div>아이디 찾기</div>
             <div>|</div>
-            <div>pwd 찾기</div>
+            <div>비밀번호 찾기</div>
           </TextWrap>
         </Form>
         <BtnWrapper>
-          <SignupLink to="/signup" >Sign up</SignupLink>
-          <button onClick={onClick}>Sign In</button>
+          <SignupLink to="/signup">회원가입</SignupLink>
+          <button onClick={onClick}>로그인</button>
         </BtnWrapper>
       </Wrapper>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
 const Wrapper = styled.div`
   width: 350px;

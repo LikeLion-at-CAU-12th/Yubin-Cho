@@ -1,35 +1,45 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
-import { getMypage } from '../apis/user';
-
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { getMyPage } from "../apis/user";
+import { useNavigate } from "react-router-dom";
 
 const Mypage = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getMypage().then((data) => {
-      setData(data);
-      setLoading(false);
-    })
-    .catch((error) => {
-      alert("Invalid Token");
-    });
+    getMyPage(localStorage.getItem("access"))
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        alert("토큰 기한 만료");
+      });
   }, []);
 
-  if(loading) return <div>Wait a sec pls...</div>
+  if (loading) return <div>로딩중입니당....</div>;
+
+  const onClick = () => {
+  localStorage.removeItem('token');
+  navigate('/')
+  };
+
 
   return (
     <Wrapper>
-      <Title>Member Info</Title>
-      <div>Your Name: {data.name} </div>
-      <div>Your Age: {data.age} </div>
+      <Title>회원 정보</Title>
+      <div>회원님 성함: {data.name}</div>
+      <div>회원님 나이: {data.age}</div>
+      <BtnWrapper>
+        <button onClick={onClick}>로그아웃</button>
+        </BtnWrapper>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Mypage
-
+export default Mypage;
 
 const Wrapper = styled.div`
   display: flex;
@@ -56,4 +66,31 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 800;
   line-height: normal;
+`;
+const BtnWrapper = styled.div`
+  height: 100%;
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  button {
+    font-weight: 800;
+    background-color: #89cdf6;
+    color: white;
+    padding: 19px;
+    border-radius: 10px;
+    border: none;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 3px 3px skyblue;
+      color: black;
+      background-color: white;
+    }
+  }
 `;

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { signUp } from '../apis/user';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { signUp } from "../apis/user";
 
 const Signup = () => {
   const [id, setId] = useState();
@@ -11,44 +11,43 @@ const Signup = () => {
 
   const onChangeId = (e) => {
     setId(e.target.value);
-  }  
-  const onChangepw = (e) => {
+  };
+  const onChangePw = (e) => {
     setPw(e.target.value);
-  }  
+  };
   const onChangeName = (e) => {
     setName(e.target.value);
-  }
+  };
   const onChangeAge = (e) => {
-    setAge(Number(e.target.value));
-  }
+    setAge(e.target.value);
+  };
 
   const router = useNavigate();
 
   const onClick = async () => {
     await signUp(id, pw, name, age);
-    router("/")
-  }
-  
+    router("/");
+  };
+
   return (
     <Wrapper>
-      <Title>Sign up</Title>
+      <Title>회원가입</Title>
       <Inputs>
-      <div>ID</div>
-      <input value={id} onChange={onChangeId} />
-      <div>pwd</div>
-      <input type='password' value={pw} onChange={onChangepw} />
-      <div>your name</div>
-      <input value={name} onChange={onChangeName} />
-      <div>your age</div>
-      <input value={age} onChange={onChangeAge} />
+        <div>아이디</div>
+        <input value={id} onChange={onChangeId} />
+        <div>비밀번호</div>
+        <input value={pw} onChange={onChangePw} />
+        <div>이름</div>
+        <input value={name} onChange={onChangeName} />
+        <div>나이</div>
+        <input value={age} onChange={onChangeAge} />
       </Inputs>
-          <button onClick={onClick}>Sign up</button>
+      <button onClick={onClick}>가입하기</button>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Signup
-
+export default Signup;
 
 const Wrapper = styled.div`
   width: 350px;
