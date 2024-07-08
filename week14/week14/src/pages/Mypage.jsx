@@ -8,6 +8,11 @@ const Mypage = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  const onClick = () => {
+    localStorage.removeItem('token');
+    navigate('/')
+    };
+
   useEffect(() => {
     getMyPage(localStorage.getItem("access"))
       .then((data) => {
@@ -16,16 +21,12 @@ const Mypage = () => {
       })
       .catch((error) => {
         alert("토큰 기한 만료");
+        localStorage.removeItem('token');
+        navigate('/');
       });
   }, []);
 
   if (loading) return <div>로딩중입니당....</div>;
-
-  const onClick = () => {
-  localStorage.removeItem('token');
-  navigate('/')
-  };
-
 
   return (
     <Wrapper>
