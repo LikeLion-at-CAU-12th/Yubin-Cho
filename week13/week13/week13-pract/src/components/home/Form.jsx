@@ -10,7 +10,7 @@ const Form = ({type, inputType}) => {
         const value = e.target.value;
         if(inputType === '이름'){
             setUserName(value);
-        }else{
+        }else if(inputType === '이메일'){
             setEmail(value);
         }
     }

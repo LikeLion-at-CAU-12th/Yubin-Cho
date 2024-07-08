@@ -14,3 +14,8 @@ export const isSubmittedAtom = atom({
     key : 'isSubmitted',
     default : false, //불리언 값
 });
+
+export const charAtom = atom({
+    key : 'char',
+    default : '깜찍한',
+});

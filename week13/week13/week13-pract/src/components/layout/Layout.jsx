@@ -3,25 +3,25 @@ import styled from 'styled-components'
 import { Button } from './common'
 import { ThemeColorContext } from '../../context/context'
 import { useRecoilValue } from 'recoil'
-import { emailAtom, isSubmittedAtom, userNameAtom } from '../../recoil/atom'
+import { charAtom, emailAtom, isSubmittedAtom, userNameAtom } from '../../recoil/atom'
 
 const Layout = ({ children }) => {
-    const context = useContext(ThemeColorContext);
-    const [mode, setMode] = useState(context.blueTheme);
+    const themeContext = useContext(ThemeColorContext);
+    const [mode, setMode] = useState(themeContext.blueTheme);
     const userName = useRecoilValue(userNameAtom);
     const email = useRecoilValue(emailAtom);
+    const char = useRecoilValue(charAtom);
     const isSubmitted = useRecoilValue(isSubmittedAtom);
-
 
     const handleMode = (e) => {
         const value = e.target.value;
         if(value === 'blue'){
-            setMode(context.blueTheme);
+            setMode(themeContext.blueTheme);
         }else if(value === 'green'){
-            setMode(context.greenTheme);
+            setMode(themeContext.greenTheme);
         }else{
-            setMode(context.pinkTheme);
-        }
+            setMode(themeContext.pinkTheme);
+    }
     }
   return (
     <ThemeColorContext.Provider value={mode}>
@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
         </Header>
     <div>{children}</div>
     <Footer mode={mode.main}>
-      {isSubmitted ? `${userName}의 공간 | ${email}` : '2024 LikeLion FE'}
+      {isSubmitted ? `${char} ${userName}의 공간 | ${email}` : '2024 LikeLion FE'}
     </Footer>
     </Wrapper>
     </ThemeColorContext.Provider>
