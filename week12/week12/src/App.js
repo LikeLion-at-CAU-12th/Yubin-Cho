@@ -5,6 +5,7 @@ import BookList from "./pages/BookList";
 import BookDetail from "./pages/BookDetail";
 import TestList from "./pages/TestList";
 import TestResult from "./pages/TestResult";
+import PrivateRoute from "./pages/PrivateRoute";
 
 function App() {
   return (
@@ -14,7 +15,11 @@ function App() {
         <Route path ="/books" element ={<BookList/>}>
           <Route path= ":id" element={<BookDetail/>}/>
         </Route>
-        <Route path="/liontest" element={<TestList></TestList>}></Route>{" "}
+        <Route path="/liontest" element={
+          <PrivateRoute>
+          <TestList />
+          </PrivateRoute>
+          }></Route>{" "}
         <Route
           path="/liontest/result/:num"
           element={<TestResult></TestResult>}
