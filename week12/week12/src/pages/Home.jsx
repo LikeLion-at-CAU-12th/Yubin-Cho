@@ -1,20 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom'
-import { login } from "../apis/user";
+import { Link, useNavigate } from 'react-router-dom';
+import { login, signUp  } from "../apis/user"; // 가정: signUp API가 존재함
 import { useForm } from '../hooks/useForm';
 import Modal from 'react-modal';
 
 const Home = () => {
-  const [id, onChangeId] = useForm();
-  const [pw, onChangePw] = useForm();
+  const [loginId, onChangeLoginId] = useForm('');
+  const [loginPw, onChangeLoginPw] = useForm('');
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [signupId, setSignupId] = useState('');
+  const [signupPw, setSignupPw] = useState('');
+  const [signupName, setSignupName] = useState('');
+  const [signupAge, setSignupAge] = useState('');
 
   const router = useNavigate();
-  const onClick = async () => {
+  
+  const handleSignupIdChange = (e) => setSignupId(e.target.value);
+  const handleSignupPwChange = (e) => setSignupPw(e.target.value);
+  const handleSignupNameChange = (e) => setSignupName(e.target.value);
+  const handleSignupAgeChange = (e) => setSignupAge(e.target.value);
+
+  const handleSignUp = async () => {
     try {
-      const result = await login(id, pw);
+      await signUp(signupId, signupPw, signupName, signupAge);
+      router("/");
+    } catch (error) {
+      alert("회원가입에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
+  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
+  const [signupModalIsOpen, setSignupModalIsOpen] = useState(false);
+
+  const handleLoginClick = async () => {
+    try {
+      const result = await login(loginId, loginPw);
       localStorage.setItem("access", result.accessToken);
       localStorage.setItem("refresh", result.refreshToken);
       router("/liontest");
@@ -22,49 +43,81 @@ const Home = () => {
       alert("아이디와 패스워드를 다시 확인하세요");
     }
   };
-  const showModal = () => {
-    setModalIsOpen(!modalIsOpen);
-  };
+
+  const toggleLoginModal = () => setLoginModalIsOpen(!loginModalIsOpen);
+  const toggleSignupModal = () => setSignupModalIsOpen(!signupModalIsOpen);
 
   return (
     <div>
-        <MenuDom>
-            <Title>🐬12주차 세션🤍</Title>
-            <StyledLink to ="/books">
-              Book List 📚
-            </StyledLink>
-            <StyledLink to ="/liontest">
-              멋사인 테스트 🦁
-            </StyledLink>
-            <Button><button>회원가입</button><button onClick={showModal}>로그인</button></Button>
-            {modalIsOpen ? (
-        <Modal
-        isOpen={true}
-        ariaHideApp={false}
-        onRequestClose={() => setModalIsOpen(false)}
-        style={{
-          content: {
-            height: '250px',
-            width: '300px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}}>
-          <Inputs>
-            <div>아이디</div>
-            <input value={id} onChange={onChangeId} />
-            <div>비밀번호</div>
-            <input type="password" value={pw} onChange={onChangePw} />
-          <Button><button onClick={onClick}>로그인</button></Button>
-          </Inputs>
-        </Modal>) : null }
-        </MenuDom>
+      <MenuDom>
+        <Title>🐬12주차 세션🤍</Title>
+        <StyledLink to="/books">Book List 📚</StyledLink>
+        <StyledLink to="/liontest">멋사인 테스트 🦁</StyledLink>
+        <Button>
+          <button onClick={toggleSignupModal}>회원가입</button>
+          {signupModalIsOpen && (
+            <Modal
+              isOpen={true}
+              ariaHideApp={false}
+              onRequestClose={toggleSignupModal}
+              style={{
+                content: {
+                  height: '450px',
+                  width: '350px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                },
+              }}
+            >
+              <Inputs>
+                <div>아이디</div>
+                <input value={signupId} onChange={handleSignupIdChange} />
+                <div>비밀번호</div>
+                <input type="password" value={signupPw} onChange={handleSignupPwChange} />
+                <div>이름</div>
+                <input value={signupName} onChange={handleSignupNameChange} />
+                <div>나이</div>
+                <input value={signupAge} onChange={handleSignupAgeChange} />
+              </Inputs>
+              <button onClick={handleSignUp}>회원가입</button>
+            </Modal>
+          )}
+          <button onClick={toggleLoginModal}>로그인</button>
+          {loginModalIsOpen && (
+            <Modal
+              isOpen={true}
+              ariaHideApp={false}
+              onRequestClose={toggleLoginModal}
+              style={{
+                content: {
+                  height: '250px',
+                  width: '300px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                },
+              }}
+            >
+              <Inputs>
+                <div>아이디</div>
+                <input value={loginId} onChange={onChangeLoginId} />
+                <div>비밀번호</div>
+                <input type="password" value={loginPw} onChange={onChangeLoginPw} />
+                <Button>
+                  <button onClick={handleLoginClick}>로그인</button>
+                </Button>
+              </Inputs>
+            </Modal>
+          )}
+        </Button>
+      </MenuDom>
     </div>
-  )
-}
+  );
+};
 
-export default Home
-
+export default Home;
 
 const Inputs = styled.div`
   display: flex;
@@ -132,7 +185,7 @@ const Title = styled.div`
   font-weight: 700;
 `;
 
-const StyledLink = styled(Link)` //이미 만들어진것에도 꾸밀 수 있음
+const StyledLink = styled(Link)` 
   display: flex;
   justify-content: center;
   align-items: center;
